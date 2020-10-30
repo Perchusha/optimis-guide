@@ -28,6 +28,5 @@ export class TopLayout extends View {
 		});
 
 		this.show(this.layout.getCell("toolbar"), ToolbarView);
-		this.show(this.layout.getCell("content"), EmptyView, { content: "first" });
 	}
 }
