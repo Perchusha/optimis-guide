@@ -1,10 +1,11 @@
 import "./styles/main.scss";
 import { App } from "dhx-optimus";
-import { TopLayout } from "./views/TopLayout";
 import Store from "./store/store";
 
+import { TopLayout } from "./views/TopLayout";
+
 const initialState = {
-	name: "Bob"
+	name: "Optimus"
 }
 
 export class MyApp extends App {
