@@ -29,6 +29,10 @@ export class ToolbarView extends View {
 			]
 		});
 
+		this.observe(state => state.active, active => {
+			toolbar.data.update(active, { active: true });
+		})
+
 		toolbar.events.on("click", id => {
 			this.fire("viewChange", [id]);
 		})

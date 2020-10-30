@@ -7,8 +7,8 @@ export class TopLayout extends View {
 	init() {
 		this.initUI();
 
-		this.on("viewChange", id => {
-			this.show(this.layout.getCell("content"), EmptyView, { content: id });
+		this.observe(state => state.active, active => {
+			this.show(this.layout.getCell("content"), EmptyView, { content: active });
 		})
 
 		return this.layout;
@@ -27,7 +27,6 @@ export class TopLayout extends View {
 			]
 		});
 
-		this.show(this.layout.getCell("toolbar"), ToolbarView);
-		this.show(this.layout.getCell("content"), EmptyView, { content: "first" });
+		this.show(this.layout.getCell("toolbar"), ToolbarView, { active: this.app.state.active });
 	}
 }
