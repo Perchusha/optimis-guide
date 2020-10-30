@@ -5,7 +5,7 @@ import Store from "./store/store";
 import { TopLayout } from "./views/TopLayout";
 
 const initialState = {
-	active: "first"
+	name: "Optimus"
 }
 
 export class MyApp extends App {
@@ -13,15 +13,6 @@ export class MyApp extends App {
 		this.store = new Store(initialState);
 		this.params.store = this.store;
 		this.state = this.store.getState();
-
-		this.subscribe();
-
 		this.show("", TopLayout);
-	}
-
-	subscribe() {
-		this.on("viewChange", id => {
-			this.state.active = id;
-		})
 	}
 }
