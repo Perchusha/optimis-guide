@@ -1,7 +1,33 @@
 import { View } from "dhx-optimus";
 
+import { ToolbarView } from "./ToolbarView";
+import { EmptyView } from "./EmptyView";
+
 export class TopLayout extends View {
 	init() {
-		return `<h3 style="padding: 20px; margin: 0;">Hello ${this.app.state.name}!</h3>`;
+		this.initUI();
+
+		this.on("viewChange", id => {
+			this.show(this.layout.getCell("content"), EmptyView, { content: id });
+		})
+
+		return this.layout;
+	}
+
+	initUI() {
+		this.layout = new dhx.Layout(null, {
+			rows: [
+				{
+					id: "toolbar",
+					gravity: false
+				},
+				{
+					id: "content"
+				}
+			]
+		});
+
+		this.show(this.layout.getCell("toolbar"), ToolbarView);
+		this.show(this.layout.getCell("content"), EmptyView, { content: "first" });
 	}
 }
