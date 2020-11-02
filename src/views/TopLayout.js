@@ -12,13 +12,13 @@ export class TopLayout extends View {
 		this.observe(state => state.active, active => {
 			switch (active) {
 				case "first":
-					this.show(this.layout.getCell("content"), DataView);
+					this.show(this.layout.getCell("content"), DataView, { dataCollection: this.app.state.data });
 					break;
 				case "second":
-					this.show(this.layout.getCell("content"), ChartView);
+					this.show(this.layout.getCell("content"), ChartView, { dataCollection: this.app.state.data });
 					break;
 				case "third":
-					this.show(this.layout.getCell("content"), GridView);
+					this.show(this.layout.getCell("content"), GridView, { dataCollection: this.app.state.data });
 					break;
 			}
 		})
@@ -31,6 +31,7 @@ export class TopLayout extends View {
 			rows: [
 				{
 					id: "toolbar",
+					height: 56,
 					gravity: false
 				},
 				{
