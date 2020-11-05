@@ -1,0 +1,31 @@
+.dhx_dataview-item {
+	padding: 2px;
+}
+
+.personal-card {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	color: rgba(0, 0, 0, 0.7);
+	padding: 10px 12px;
+
+	&__container {
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		position: relative;
+
+		& h3, & p {
+			text-align: left;
+			font-size: 14px;
+			line-height: 20px;
+			height: 20px;
+			margin: 0 0 4px 0;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+}

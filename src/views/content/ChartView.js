@@ -1,20 +1,30 @@
 import { View } from "dhx-optimus";
+import { getChartStatistic } from "../../dataset";
 
 export class ChartView extends View {
 	init() {
-		return new dhx.Chart(null, {
+		const chart = new dhx.Chart(null, {
 			css: "chart",
-			type: "pie",
+			type: "donut",
 			series: [
 				{
-					value: "chartValue",
+					value: "value",
 					color: "color",
-					stroke: "#FFFFFF",
-					strokeWidth: 2,
-					showText: true
-				}
+					text: "post",
+				},
 			],
-			data: this.params.dataCollection
+			legend: {
+				values: {
+					id: "id",
+					text: "post",
+					color: "color",
+				},
+				halign: "right",
+				valign: "bottom",
+			},
+			data: getChartStatistic()
 		});
+
+		return chart;
 	}
 }
