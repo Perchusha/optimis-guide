@@ -31,11 +31,10 @@ export class TopLayout extends View {
 			rows: [
 				{
 					id: "toolbar",
-					height: 56,
-					gravity: false
 				},
 				{
-					id: "content"
+					id: "content",
+					height: "calc(100% - 56px)"
 				}
 			]
 		});

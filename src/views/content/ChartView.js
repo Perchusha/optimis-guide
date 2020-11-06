@@ -19,7 +19,7 @@ export class ChartView extends View {
 					text: "post",
 					color: "color",
 				},
-				halign: "right",
+				halign: "center",
 				valign: "bottom",
 			},
 			data: getChartStatistic()
