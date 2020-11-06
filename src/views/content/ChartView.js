@@ -1,5 +1,5 @@
 import { View } from "dhx-optimus";
-import { getChartStatistic } from "../../dataset";
+import { getChartStatistic } from "../../helpers/data";
 
 export class ChartView extends View {
 	init() {

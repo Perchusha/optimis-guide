@@ -3,11 +3,11 @@ import { App } from "dhx-optimus";
 import Store from "./store/store";
 
 import { TopLayout } from "./views/TopLayout";
-import { dataCollection } from "./dataset";
+import { data } from "./helpers/data";
 
 const initialState = {
 	active: "first",
-	data: dataCollection
+	data: data
 }
 
 export class MyApp extends App {

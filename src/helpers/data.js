@@ -265,14 +265,25 @@ const dataset = [
 	}
 ];
 
-export const dataCollection = (new dhx.DataCollection()).parse(dataset);
+const dataCollection = new dhx.DataCollection();
+dataCollection.parse(dataset);
+export const data = dataCollection;
+
+export const emptyItem = {
+	name: "",
+	post: "",
+	phone: "",
+	mail: "",
+	birthday: "",
+	start: "",
+}
 
 export function getChartStatistic() {
 	const state = [];
 	const counter = {};
 	const color = ["#ffffc0", "#ff916b", "#ff4169", "#863958", "#84bec3", "#ffff9c", "#ff7657", "#f93555", "#6d2e47", "#6b9a9e"];
 
-	dataset.forEach(({ post }) => {
+	data.forEach(({ post }) => {
 		if (!counter[post]) {
 			counter[post] = 1;
 		} else {
