@@ -28,6 +28,6 @@
 		"webpack-merge": "^4.2.2"
 	},
 	"dependencies": {
-		"dhx-optimus": "^2.0.1"
+		"dhx-optimus": "^2.1.0"
 	}
 }
