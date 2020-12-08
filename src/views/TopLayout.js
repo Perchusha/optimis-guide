@@ -19,7 +19,7 @@ export class TopLayout extends View {
 			rows: [
 				{
 					id: "toolbar",
-					gravity: false
+					height: "content"
 				},
 				{
 					id: "content"
