@@ -11,7 +11,7 @@ export class DataView extends View {
 			return template;
 		}
 
-		const dataView = new dhx.DataView(null, {
+		this.dataView = new dhx.DataView(null, {
 			keyNavigation: true,
 			data: this.params.dataCollection,
 			itemsInRow: 2,
@@ -19,23 +19,22 @@ export class DataView extends View {
 			template: template
 		});
 
-
 		this.app.events.on("removeItem", () => {
-			const selected = dataView.selection.getItem()
+			const selected = this.dataView.selection.getItem()
 			if (selected) {
-				dataView.data.remove(selected.row.id);
+				this.dataView.data.remove(selected.id);
 			}
 		})
 
 		this.app.events.on("addItem", () => {
 			const selected = dataView.selection.getItem()
 			if (selected) {
-				dataView.data.add({ emptyItem }, dataView.data.getIndex(selected.row.id) + 1);
+				this.dataView.data.add({ emptyItem }, this.dataView.data.getIndex(selected.row.id) + 1);
 			} else {
-				dataView.data.add({ emptyItem }, 0);
+				this.dataView.data.add({ emptyItem }, 0);
 			}
 		})
 
-		return dataView;
+		return this.dataView;
 	}
 }

@@ -9,7 +9,7 @@ export class GridView extends View {
 			return self.indexOf(value) === index;
 		});
 
-		const grid = new dhx.Grid(null, {
+		this.grid = new dhx.Grid(null, {
 			columns: [
 				{ id: "name", header: [{ text: "Name" }] },
 				{ id: "post", header: [{ text: "Post" }], editorType: "select", options: postUniq },
@@ -25,21 +25,21 @@ export class GridView extends View {
 		});
 
 		this.app.events.on("removeItem", () => {
-			const selected = grid.selection.getCell()
+			const selected = this.grid.selection.getCell();
 			if (selected) {
-				grid.data.remove(selected.row.id);
+				this.grid.data.remove(selected.row.id);
 			}
 		})
 
 		this.app.events.on("addItem", () => {
-			const selected = grid.selection.getCell()
+			const selected = this.grid.selection.getCell()
 			if (selected) {
-				grid.data.add({ emptyItem }, grid.data.getIndex(selected.row.id) + 1);
+				this.grid.data.add({ emptyItem }, this.grid.data.getIndex(selected.row.id) + 1);
 			} else {
-				grid.data.add({ emptyItem }, 0);
+				this.grid.data.add({ emptyItem }, 0);
 			}
 		})
 
-		return grid
+		return this.grid;
 	}
 }

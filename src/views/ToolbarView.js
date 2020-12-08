@@ -2,7 +2,7 @@ import { View } from "dhx-optimus";
 
 export class ToolbarView extends View {
 	init() {
-		const toolbar = this.toolbar = new dhx.Toolbar(null, {
+		this.toolbar = new dhx.Toolbar(null, {
 			css: "toolbar",
 			data: [
 				{
@@ -51,10 +51,10 @@ export class ToolbarView extends View {
 			} else {
 				this.showActionButtons();
 			}
-			toolbar.data.update(active, { active: true });
+			this.toolbar.data.update(active, { active: true });
 		})
 
-		toolbar.events.on("click", id => {
+		this.toolbar.events.on("click", id => {
 			switch (id) {
 				case "first":
 				case "second":
@@ -70,7 +70,7 @@ export class ToolbarView extends View {
 			}
 		})
 
-		return toolbar;
+		return this.toolbar;
 	}
 
 	hideActionButtons() {

@@ -21,7 +21,7 @@ export class TopLayout extends View {
 					this.show(this.layout.getCell("content"), GridView, { dataCollection: this.app.state.data });
 					break;
 			}
-		})
+		});
 
 		return this.layout;
 	}
