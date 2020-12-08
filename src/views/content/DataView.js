@@ -11,7 +11,6 @@ export class DataView extends View {
 		}
 
 		return new dhx.DataView(null, {
-			keyNavigation: true,
 			data: this.params.dataCollection,
 			itemsInRow: 2,
 			gap: 20,
