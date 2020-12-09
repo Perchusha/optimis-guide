@@ -1,13 +1,15 @@
 import { View } from "dhx-optimus";
-import { emptyItem } from "../../helpers/data";
+import { emptyItem } from "../../assets/data/data";
 
 export class GridView extends View {
 	init() {
-		const postUniq = this.params.dataCollection.map(item => {
-			return item.post;
-		}).filter((value, index, self) => {
-			return self.indexOf(value) === index;
-		});
+		const postUniq = this.params.dataCollection
+			.map(item => {
+				return item.post;
+			})
+			.filter((value, index, self) => {
+				return self.indexOf(value) === index;
+			});
 
 		this.grid = new dhx.Grid(null, {
 			columns: [
@@ -16,30 +18,32 @@ export class GridView extends View {
 				{ id: "phone", header: [{ text: "Phone" }] },
 				{ id: "mail", header: [{ text: "Mail" }] },
 				{ id: "birthday", header: [{ text: "Birthday" }], type: "date", dateFormat: "%d.%m.%Y" },
-				{ id: "start", header: [{ text: "Start" }], type: "date", dateFormat: "%d.%m.%Y" }
+				{ id: "start", header: [{ text: "Start" }], type: "date", dateFormat: "%d.%m.%Y" },
 			],
 			autoWidth: true,
 			selection: "row",
 			editable: true,
-			data: this.params.dataCollection
+			data: this.params.dataCollection,
 		});
 
+		return this.grid;
+	}
+
+	ready() {
 		this.app.events.on("removeItem", () => {
 			const selected = this.grid.selection.getCell();
 			if (selected) {
 				this.grid.data.remove(selected.row.id);
 			}
-		})
+		});
 
 		this.app.events.on("addItem", () => {
-			const selected = this.grid.selection.getCell()
+			const selected = this.grid.selection.getCell();
 			if (selected) {
-				this.grid.data.add({ emptyItem }, this.grid.data.getIndex(selected.row.id) + 1);
+				this.grid.data.add(emptyItem, this.grid.data.getIndex(selected.row.id) + 1);
 			} else {
-				this.grid.data.add({ emptyItem }, 0);
+				this.grid.data.add(emptyItem, 0);
 			}
-		})
-
-		return this.grid;
+		});
 	}
 }

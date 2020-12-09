@@ -1,4 +1,4 @@
-const dataset = [
+export const data = [
 	{
 		name: "Theo Fisher",
 		post: "Head of department",
@@ -262,26 +262,24 @@ const dataset = [
 		mail: "kmccoy@gmail.com",
 		birthday: "10.01.1956",
 		start: "15.09.1990",
-	}
+	},
 ];
-
-const dataCollection = new dhx.DataCollection();
-dataCollection.parse(dataset);
-export const data = dataCollection;
-
-export const emptyItem = {
-	name: "",
-	post: "",
-	phone: "",
-	mail: "",
-	birthday: "",
-	start: "",
-}
 
 export function getChartStatistic() {
 	const state = [];
 	const counter = {};
-	const color = ["#ffffc0", "#ff916b", "#ff4169", "#863958", "#84bec3", "#ffff9c", "#ff7657", "#f93555", "#6d2e47", "#6b9a9e"];
+	const color = [
+		"#ffffc0",
+		"#ff916b",
+		"#ff4169",
+		"#863958",
+		"#84bec3",
+		"#ffff9c",
+		"#ff7657",
+		"#f93555",
+		"#6d2e47",
+		"#6b9a9e",
+	];
 
 	data.forEach(({ post }) => {
 		if (!counter[post]) {
@@ -297,8 +295,17 @@ export function getChartStatistic() {
 			value,
 			post,
 			color: color[id],
-		})
-	})
+		});
+	});
 
 	return state;
 }
+
+export const emptyItem = {
+	name: "",
+	post: "",
+	phone: "",
+	mail: "",
+	birthday: "",
+	start: "",
+};

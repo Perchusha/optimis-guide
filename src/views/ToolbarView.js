@@ -2,33 +2,33 @@ import { View } from "dhx-optimus";
 
 export class ToolbarView extends View {
 	init() {
-		this.toolbar = new dhx.Toolbar(null, {
+		return (this.toolbar = new dhx.Toolbar(null, {
 			css: "toolbar",
 			data: [
 				{
 					type: "title",
-					value: "DHTMLX Optimus Started Demo"
+					value: "DHTMLX Optimus Started Demo",
 				},
 				{
-					type: "spacer"
+					type: "spacer",
 				},
 				{
 					id: "first",
 					value: "First",
-					group: "views"
+					group: "views",
 				},
 				{
 					id: "second",
 					value: "Second",
-					group: "views"
+					group: "views",
 				},
 				{
 					id: "third",
 					value: "Third",
-					group: "views"
+					group: "views",
 				},
 				{
-					type: "spacer"
+					type: "spacer",
 				},
 				{
 					id: "remove",
@@ -39,20 +39,32 @@ export class ToolbarView extends View {
 					id: "add",
 					icon: "dxi dxi-plus",
 					circle: true,
-				}
-			]
-		});
+				},
+			],
+		}));
+	}
 
+	ready() {
 		this.actionButtons = ["remove", "add"];
 
-		this.observe(state => state.active, active => {
-			if (active === "second") {
-				this.hideActionButtons();
-			} else {
+		this.observe(
+			state => state.active,
+			active => {
 				this.showActionButtons();
+
+				switch (active) {
+					case "second":
+						this.hideActionButtons();
+						break;
+
+					case "first":
+						this.toolbar.disable("add");
+						break;
+				}
+
+				this.toolbar.data.update(active, { active: true });
 			}
-			this.toolbar.data.update(active, { active: true });
-		})
+		);
 
 		this.toolbar.events.on("click", id => {
 			switch (id) {
@@ -68,24 +80,14 @@ export class ToolbarView extends View {
 					this.fire("addItem", []);
 					break;
 			}
-		})
-
-		return this.toolbar;
+		});
 	}
 
 	hideActionButtons() {
-		this.actionButtons.forEach(item => {
-			if (!this.toolbar.isDisabled(item)) {
-				this.toolbar.disable(item);
-			}
-		});
+		this.toolbar.disable(this.actionButtons);
 	}
 
 	showActionButtons() {
-		this.actionButtons.forEach(item => {
-			if (this.toolbar.isDisabled(item)) {
-				this.toolbar.enable(item);
-			}
-		});
+		this.toolbar.enable(this.actionButtons);
 	}
 }

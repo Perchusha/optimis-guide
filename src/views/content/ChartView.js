@@ -1,9 +1,9 @@
 import { View } from "dhx-optimus";
-import { getChartStatistic } from "../../helpers/data";
+import { getChartStatistic } from "../../assets/data/data";
 
 export class ChartView extends View {
 	init() {
-		this.chart = new dhx.Chart(null, {
+		return new dhx.Chart(null, {
 			css: "chart",
 			type: "donut",
 			series: [
@@ -22,9 +22,7 @@ export class ChartView extends View {
 				halign: "center",
 				valign: "bottom",
 			},
-			data: getChartStatistic()
+			data: getChartStatistic(),
 		});
-
-		return this.chart;
 	}
 }
