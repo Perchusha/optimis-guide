@@ -5,7 +5,7 @@ import Store from "dhx-optimus-store";
 
 import { TopLayout } from "./views/TopLayout";
 
-import { dataCollection } from "./dataset";
+import { dataCollection } from "../src/assets/data/dataset";
 
 const initialState = {
 	active: "first",
