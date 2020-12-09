@@ -5,11 +5,10 @@ import Store from "dhx-optimus-store";
 
 import { TopLayout } from "./views/TopLayout";
 
-import { dataCollection } from "../src/assets/data/dataset";
+import { data } from "./assets/data/data";
 
 const initialState = {
 	active: "first",
-	data: dataCollection,
 };
 
 export class MyApp extends App {
@@ -18,7 +17,10 @@ export class MyApp extends App {
 		this.params.store = this.store;
 		this.state = this.store.getState();
 
-		this.show(null, TopLayout);
+		this.persons = new dhx.DataCollection();
+		this.persons.parse(data);
+
+		this.show(null, TopLayout, { persons: this.persons });
 
 		this.subscribe();
 	}

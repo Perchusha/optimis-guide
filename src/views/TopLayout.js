@@ -29,17 +29,17 @@ export class TopLayout extends View {
 				switch (active) {
 					case "first":
 						this.show(this.layout.getCell("content"), DataView, {
-							dataCollection: this.app.state.data,
+							dataCollection: this.params.persons,
 						});
 						break;
 					case "second":
 						this.show(this.layout.getCell("content"), ChartView, {
-							dataCollection: this.app.state.data,
+							dataCollection: this.params.persons,
 						});
 						break;
 					case "third":
 						this.show(this.layout.getCell("content"), GridView, {
-							dataCollection: this.app.state.data,
+							dataCollection: this.params.persons,
 						});
 						break;
 				}

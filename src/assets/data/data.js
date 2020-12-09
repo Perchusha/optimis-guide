@@ -1,4 +1,4 @@
-const dataset = [
+export const data = [
 	{
 		name: "Theo Fisher",
 		post: "Head of department",
@@ -265,8 +265,6 @@ const dataset = [
 	},
 ];
 
-export const dataCollection = new dhx.DataCollection().parse(dataset);
-
 export function getChartStatistic() {
 	const state = [];
 	const counter = {};
@@ -283,7 +281,7 @@ export function getChartStatistic() {
 		"#6b9a9e",
 	];
 
-	dataset.forEach(({ post }) => {
+	data.forEach(({ post }) => {
 		if (!counter[post]) {
 			counter[post] = 1;
 		} else {
