@@ -6,7 +6,9 @@ const pack = require("../package.json");
 
 const PATHS = {
 	src: path.join(__dirname, "../src"),
-	dist: path.join(__dirname, "../dist")
+	dist: path.join(__dirname, "../dist"),
+	static: "static/",
+	assets: "assets/",
 };
 
 module.exports = {
@@ -14,7 +16,7 @@ module.exports = {
 		paths: PATHS,
 	},
 	entry: {
-		app: ["@babel/polyfill", PATHS.src]
+		app: ["@babel/polyfill", PATHS.src],
 	},
 	output: {
 		filename: "[name].js",
@@ -45,7 +47,7 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.scss$/,
+				test: /\.css$/,
 				use: [
 					"style-loader",
 					MiniCssExtractPlugin.loader,
@@ -60,10 +62,6 @@ module.exports = {
 							config: { path: "./postcss.config.js" },
 						},
 					},
-					{
-						loader: "sass-loader",
-						options: { sourceMap: true },
-					},
 				],
 			},
 		],
@@ -77,8 +75,9 @@ module.exports = {
 			filename: "[name].css",
 		}),
 		new CopyWebpackPlugin([
-			{ from: `${PATHS.src}/styles/`, to: "styles/" },
+			{ from: `${PATHS.src}/${PATHS.assets}`, to: `${PATHS.assets}` },
+			{ from: `${PATHS.src}/${PATHS.static}`, to: `${PATHS.static}` },
 			{ from: `${PATHS.src}/index.html`, to: "index.html" },
-		])
+		]),
 	],
 };
