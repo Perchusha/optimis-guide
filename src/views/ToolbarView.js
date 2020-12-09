@@ -2,41 +2,44 @@ import { View } from "dhx-optimus";
 
 export class ToolbarView extends View {
 	init() {
-		const toolbar = new dhx.Toolbar(null, {
+		return (this.toolbar = new dhx.Toolbar(null, {
 			css: "toolbar",
 			data: [
 				{
-					type: "spacer"
+					type: "spacer",
 				},
 				{
 					id: "first",
 					value: "First",
-					group: "views"
+					group: "views",
 				},
 				{
 					id: "second",
 					value: "Second",
-					group: "views"
+					group: "views",
 				},
 				{
 					id: "third",
 					value: "Third",
-					group: "views"
+					group: "views",
 				},
 				{
-					type: "spacer"
-				}
-			]
-		});
+					type: "spacer",
+				},
+			],
+		}));
+	}
 
-		this.observe(state => state.active, active => {
-			toolbar.data.update(active, { active: true });
-		})
+	ready() {
+		this.observe(
+			state => state.active,
+			active => {
+				this.toolbar.data.update(active, { active: true });
+			}
+		);
 
-		toolbar.events.on("click", id => {
+		this.toolbar.events.on("click", id => {
 			this.fire("viewChange", [id]);
-		})
-
-		return toolbar;
+		});
 	}
 }

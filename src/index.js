@@ -1,12 +1,13 @@
-import "./styles/main.scss";
+import "./assets/css/index.css";
+
 import { App } from "dhx-optimus";
-import Store from "./store/store";
+import Store from "dhx-optimus-store";
 
 import { TopLayout } from "./views/TopLayout";
 
 const initialState = {
-	active: "first"
-}
+	active: "first",
+};
 
 export class MyApp extends App {
 	init() {
@@ -14,14 +15,14 @@ export class MyApp extends App {
 		this.params.store = this.store;
 		this.state = this.store.getState();
 
-		this.subscribe();
+		this.show(null, TopLayout);
 
-		this.show("", TopLayout);
+		this.subscribe();
 	}
 
 	subscribe() {
 		this.on("viewChange", id => {
 			this.state.active = id;
-		})
+		});
 	}
 }

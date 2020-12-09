@@ -12,7 +12,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 			warnings: true,
 			errors: true,
 		},
-		historyApiFallback: true
+		historyApiFallback: true,
 	},
 	plugins: [
 		new webpack.SourceMapDevToolPlugin({
