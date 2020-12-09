@@ -9,10 +9,10 @@ export class GridView extends View {
 				{ id: "phone", header: [{ text: "Phone" }] },
 				{ id: "mail", header: [{ text: "Mail" }] },
 				{ id: "birthday", header: [{ text: "Birthday" }], type: "date" },
-				{ id: "start", header: [{ text: "Start" }], type: "date" }
+				{ id: "start", header: [{ text: "Start" }], type: "date" },
 			],
 			autoWidth: true,
-			data: this.params.dataCollection
+			data: this.params.dataCollection,
 		});
 	}
 }

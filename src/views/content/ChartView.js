@@ -3,7 +3,7 @@ import { getChartStatistic } from "../../dataset";
 
 export class ChartView extends View {
 	init() {
-		const chart = new dhx.Chart(null, {
+		return new dhx.Chart(null, {
 			css: "chart",
 			type: "donut",
 			series: [
@@ -22,9 +22,7 @@ export class ChartView extends View {
 				halign: "center",
 				valign: "bottom",
 			},
-			data: getChartStatistic()
+			data: getChartStatistic(),
 		});
-
-		return chart;
 	}
 }

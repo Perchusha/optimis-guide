@@ -7,38 +7,43 @@ import { GridView } from "./content/GridView";
 
 export class TopLayout extends View {
 	init() {
-		this.initUI();
-
-		this.observe(state => state.active, active => {
-			switch (active) {
-				case "first":
-					this.show(this.layout.getCell("content"), DataView, { dataCollection: this.app.state.data });
-					break;
-				case "second":
-					this.show(this.layout.getCell("content"), ChartView, { dataCollection: this.app.state.data });
-					break;
-				case "third":
-					this.show(this.layout.getCell("content"), GridView, { dataCollection: this.app.state.data });
-					break;
-			}
-		})
-
-		return this.layout;
-	}
-
-	initUI() {
-		this.layout = new dhx.Layout(null, {
+		return (this.layout = new dhx.Layout(null, {
 			rows: [
 				{
 					id: "toolbar",
-					height: "content"
+					height: "content",
+					init: cell => this.show(cell, ToolbarView, { active: this.app.state.active }),
 				},
 				{
-					id: "content"
-				}
-			]
-		});
+					id: "content",
+					height: "calc(100vh - 57px)",
+				},
+			],
+		}));
+	}
 
-		this.show(this.layout.getCell("toolbar"), ToolbarView, { active: this.app.state.active });
+	ready() {
+		this.observe(
+			state => state.active,
+			active => {
+				switch (active) {
+					case "first":
+						this.show(this.layout.getCell("content"), DataView, {
+							dataCollection: this.app.state.data,
+						});
+						break;
+					case "second":
+						this.show(this.layout.getCell("content"), ChartView, {
+							dataCollection: this.app.state.data,
+						});
+						break;
+					case "third":
+						this.show(this.layout.getCell("content"), GridView, {
+							dataCollection: this.app.state.data,
+						});
+						break;
+				}
+			}
+		);
 	}
 }
