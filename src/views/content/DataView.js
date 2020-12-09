@@ -1,5 +1,4 @@
 import { View } from "dhx-optimus";
-import { emptyItem } from "../../assets/data/data";
 
 export class DataView extends View {
 	init() {
@@ -20,7 +19,7 @@ export class DataView extends View {
 	}
 
 	ready() {
-		this.app.events.on("removeItem", () => {
+		this.on("removeItem", () => {
 			const selected = this.dataView.selection.getItem();
 			if (selected) {
 				this.dataView.data.remove(selected.id);

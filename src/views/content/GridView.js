@@ -30,14 +30,14 @@ export class GridView extends View {
 	}
 
 	ready() {
-		this.app.events.on("removeItem", () => {
+		this.on("removeItem", () => {
 			const selected = this.grid.selection.getCell();
 			if (selected) {
 				this.grid.data.remove(selected.row.id);
 			}
 		});
 
-		this.app.events.on("addItem", () => {
+		this.on("addItem", () => {
 			const selected = this.grid.selection.getCell();
 			if (selected) {
 				this.grid.data.add(emptyItem, this.grid.data.getIndex(selected.row.id) + 1);
