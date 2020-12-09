@@ -36,9 +36,9 @@ export class GridView extends View {
 		this.on("addItem", () => {
 			const selected = this.grid.selection.getCell();
 			if (selected) {
-				this.grid.data.add(JSON.parse(JSON.stringify(emptyItem)), this.grid.data.getIndex(selected.row.id) + 1);
+				this.grid.data.add(emptyItem, this.grid.data.getIndex(selected.row.id) + 1);
 			} else {
-				this.grid.data.add(JSON.parse(JSON.stringify(emptyItem)), 0);
+				this.grid.data.add(emptyItem, 0);
 			}
 		});
 
