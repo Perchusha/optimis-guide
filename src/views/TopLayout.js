@@ -14,7 +14,6 @@ export class TopLayout extends View {
 				},
 				{
 					id: "content",
-					height: "calc(100vh - 57px)",
 					init: cell => this.show(cell, EmptyView),
 				},
 			],
