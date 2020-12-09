@@ -12,7 +12,7 @@ export class TopLayout extends View {
 				{
 					id: "toolbar",
 					height: "content",
-					init: cell => this.show(cell, ToolbarView, { active: this.app.state.active }),
+					init: cell => this.show(cell, ToolbarView),
 				},
 				{
 					id: "content"
