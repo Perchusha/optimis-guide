@@ -13,8 +13,7 @@ export class TopLayout extends View {
 					init: cell => this.show(cell, ToolbarView, { active: this.app.state.active }),
 				},
 				{
-					id: "content",
-					height: "calc(100vh - 57px)",
+					id: "content"
 				},
 			],
 		}));
