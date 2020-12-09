@@ -26,10 +26,6 @@ export class GridView extends View {
 			data: this.params.dataCollection,
 		});
 
-		return this.grid;
-	}
-
-	ready() {
 		this.on("removeItem", () => {
 			const selected = this.grid.selection.getCell();
 			if (selected) {
@@ -45,5 +41,7 @@ export class GridView extends View {
 				this.grid.data.add(JSON.parse(JSON.stringify(emptyItem)), 0);
 			}
 		});
+
+		return this.grid;
 	}
 }
